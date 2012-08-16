@@ -50,7 +50,7 @@ module Gherkin
           end
         end
       end
-      
+
       def event(ev, line)
         l = line ? @line_offset+line : nil
         machine.event(ev, l) do |state, legal_events|
@@ -135,7 +135,7 @@ module Gherkin
 
         def transition_table(name)
           state_machine_reader = StateMachineReader.new
-          lexer = Gherkin::I18n.new('en').lexer(state_machine_reader)
+          lexer = Gherkin::I18n.new('en-gauntlt').lexer(state_machine_reader)
           machine = File.dirname(__FILE__) + "/#{name}.txt"
           lexer.scan(File.read(machine))
           state_machine_reader.rows

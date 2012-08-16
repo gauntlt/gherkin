@@ -4,6 +4,7 @@ require 'gherkin/native'
 module Gherkin
   module Lexer
     LexingError = Class.new(StandardError)
+    DEFAULT_LANGUAGE = 'en-gauntlt'
 
     # The main entry point to lexing Gherkin source.
     class I18nLexer
@@ -30,7 +31,7 @@ module Gherkin
       end
 
       def lang(source)
-        key = 'en'
+        key = DEFAULT_LANGUAGE
         source.each_line do |line|
           break unless COMMENT_OR_EMPTY_LINE_PATTERN =~ line
           if LANGUAGE_PATTERN =~ line
